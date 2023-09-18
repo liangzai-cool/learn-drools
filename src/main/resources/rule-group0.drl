@@ -1,0 +1,8 @@
+rule "Hello World"
+    when
+        // 规则的条件
+        $m : String( length > 0 )
+    then
+        // 规则的操作
+        System.out.println( "Hello, " + $m );
+end
