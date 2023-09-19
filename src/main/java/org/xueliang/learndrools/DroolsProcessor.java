@@ -1,6 +1,5 @@
 package org.xueliang.learndrools;
 
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.kie.api.KieBase;
 import org.kie.api.io.ResourceType;
@@ -13,7 +12,6 @@ import java.util.concurrent.ConcurrentMap;
 
 import static java.util.stream.Collectors.groupingBy;
 
-@Slf4j
 public class DroolsProcessor {
 
     private final static ConcurrentMap<String, KieBase> KIE_BASE_CACHE = new ConcurrentHashMap<>();
@@ -58,7 +56,7 @@ public class DroolsProcessor {
     public List<Rule> matchRule(String groupId, Object object) {
         KieSession kieSession = getStatelessKieSession(groupId);
         if (kieSession == null) {
-            log.warn("group id not exist, groupId: {}", groupId);
+            System.out.println("group id not exist, groupId: " + groupId);
             return Collections.emptyList();
         }
         MyAgendaEventListener myAgendaEventListener = new MyAgendaEventListener();
